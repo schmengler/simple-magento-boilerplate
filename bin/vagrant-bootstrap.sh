@@ -23,8 +23,8 @@ cp /vagrant/conf/php/zend_debugger.ini /etc/php5/mods-available/
 php5enmod zend_debugger/30
 
 # Install Ruby 2.1 via RVM
-curl -L get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
+curl -s -L get.rvm.io | bash -s stable
+source /etc/profile.d/rvm.sh
 rvm requirements
 rvm install 2.1.0
 rvm --default use 2.1.0
@@ -32,7 +32,9 @@ rvm --default use 2.1.0
 # Mailcatcher to test emails (needs latest Ruby)
 apt-get install -y libsqlite3-dev
 gem install mailcatcher
-mailcatcher --ip=0.0.0.0 # see https://github.com/sj26/mailcatcher/issues/89
+# start mailcatcher if not already running on port 1025
+# allow all ips, see https://github.com/sj26/mailcatcher/issues/89
+nc -z -w5 localhost 1025 || mailcatcher --ip=0.0.0.0
 cp /vagrant/conf/php/mailcatcher.ini /etc/php5/apache2/conf.d/
 
 #Set up Git interface: use colors, add "git tree" command
@@ -54,7 +56,6 @@ chmod +x /usr/local/bin/n98-magerun
 # Magento installation script, installs project in /home/vagrant
 # /home/vagrant/src already exists due to rsync shared folder
 chown -R vagrant:vagrant /home/vagrant
-chmod 0777 /usr/local/bin
 sudo -u vagrant -H sh -c "sh /vagrant/bin/vagrant-magento.sh"
 # make Magento directories writable as needed and add www-data user to vagrant group
 chmod -R 0777 /home/vagrant/www/var /home/vagrant/www/app/etc /home/vagrant/www/media
