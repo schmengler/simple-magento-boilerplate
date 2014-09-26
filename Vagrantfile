@@ -18,6 +18,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   config.vm.network :private_network, ip: "192.168.56.101"
 
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 1
+  end
 
   config.vm.provision :shell, :path => "bin/vagrant-bootstrap.sh"
   config.vm.provision "shell", inline: "service apache2 restart", run: "always"
