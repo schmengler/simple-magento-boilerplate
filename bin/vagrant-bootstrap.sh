@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 export DEBIAN_FRONTEND=noninteractive
 
+# /tmp has to be world-writable, but sometimes isn't by default.
+chmod 0777 /tmp
+
 # copy ssh key
 cp -r /vagrant/.ssh/* /home/vagrant/.ssh/
 chmod 0600 /home/vagrant/.ssh/*
@@ -31,7 +34,7 @@ rvm --default use 2.1.0
 
 # Mailcatcher to test emails (needs latest Ruby)
 apt-get install -y libsqlite3-dev
-gem install mailcatcher
+gem install -y mailcatcher
 # start mailcatcher if not already running on port 1025
 # allow all ips, see https://github.com/sj26/mailcatcher/issues/89
 nc -z -w5 localhost 1025 || mailcatcher --ip=0.0.0.0
