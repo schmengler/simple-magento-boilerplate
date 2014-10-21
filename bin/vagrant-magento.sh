@@ -23,7 +23,7 @@ modman deploy src --force
 # Use n98-magerun to set up Magento (database and local.xml)
 # CHANGE BASE URL AND MAGENTO VERSION HERE:
 # use --noDownload if Magento core is deployed with modman or composer. Remove the line if there already is a configured Magento installation
-n98-magerun install --dbHost="localhost" --dbUser="root" --dbPass="" --dbName="magento" --installSampleData=yes --useDefaultConfigParams=yes --magentoVersionByName="magento-ce-1.8.1.0" --installationFolder="www" --baseUrl="http://magento.local/"
+n98-magerun install --dbHost="localhost" --dbUser="root" --dbPass="" --dbName="magento" --installSampleData=yes --useDefaultConfigParams=yes --magentoVersionByName="magento-ce-1.9.0.1" --installationFolder="www" --baseUrl="http://magento.local/"
 
 # Write permissions in media
 chmod -R 0770 /home/vagrant/www/media
@@ -42,13 +42,13 @@ php ecomdev-phpunit.php -a magento-config --db-name magento_unit_tests --base-ur
 # from the install script. If it does not exist, the generated file gets copied to /etc first
 # This way you can put the devbox local.xml under version control
 if [ ! -f "/vagrant/etc/local.xml" ]; then
-	cp $REPOSITORY/www/app/etc/local.xml /vagrant/etc/local.xml
+	cp ~/www/app/etc/local.xml /vagrant/etc/local.xml
 fi
 if [ ! -f "/vagrant/etc/local.xml.phpunit" ]; then
-	cp $REPOSITORY/www/app/etc/local.xml.phpunit /vagrant/etc/local.xml.phpunit
+	cp ~/www/app/etc/local.xml.phpunit /vagrant/etc/local.xml.phpunit
 fi
-ln -fs /vagrant/etc/local.xml $REPOSITORY/www/app/etc/local.xml
-ln -fs /vagrant/etc/local.xml.phpunit $REPOSITORY/www/app/etc/local.xml.phpunit
+ln -fs /vagrant/etc/local.xml ~/www/app/etc/local.xml
+ln -fs /vagrant/etc/local.xml.phpunit ~/www/app/etc/local.xml.phpunit
 
 # Some devbox specific Magento settings
 n98-magerun admin:user:create fschmengler fschmengler@sgh-it.eu test123 Fabian Schmengler
