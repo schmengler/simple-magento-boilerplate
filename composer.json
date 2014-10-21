@@ -6,18 +6,16 @@
     },
     "require": {
         "php": ">=5.3.0",
-		"magento/ce": "1.8.1.0",
 		"riconeitzel/german-localepack-de-de": "dev-preview",
 		"firegento/magesetup": "dev-master",
 		"aoepeople/composer-installers": "dev-master",
 		"avstudnitz/scopehint": "dev-master",
 		"avstudnitz/admin-notification-advanced": "dev-master",
-		"fbrnc/aoe_managestores": "dev-master",
 		"tim-reynolds/magento-qconfig": "dev-master"
     },
     "require-dev": {
  		"fbrnc/aoe_profiler": "dev-master",
-		"fbrnc/aoe_templatehints": "dev-master",
+		"aoepeople/aoe_templatehints": "dev-master",
 		"aoepeople/envsettingstool": "~1.0",
         "sse/formfiller": "dev-master",
 		"jacquesbh/installer": "dev-master",
@@ -39,18 +37,6 @@
         {
             "type": "composer",
             "url": "http://packages.firegento.com"
-		},
-		{
-			"type": "package",
-			"package": {
-				"name": "magento/ce",
-				"version": "1.8.1.0",
-				"type": "magento-source",
-				"dist": {
-					"url": "http://www.magentocommerce.com/downloads/assets/1.8.1.0/magento-1.8.1.0.tar.gz",
-					"type": "tar"
-				}
-			}
 		},
 		{
 			"type": "vcs",
