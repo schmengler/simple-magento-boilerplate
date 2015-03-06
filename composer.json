@@ -6,20 +6,20 @@
     },
     "require": {
         "php": ">=5.3.0",
-		"riconeitzel/german-localepack-de-de": "dev-preview",
-		"firegento/magesetup": "dev-master",
-		"aoepeople/composer-installers": "dev-master",
-		"avstudnitz/scopehint": "dev-master",
-		"avstudnitz/admin-notification-advanced": "dev-master",
-		"tim-reynolds/magento-qconfig": "dev-master"
+		    "riconeitzel/german-localepack-de-de": "dev-preview",
+		    "firegento/magesetup": "dev-master",
+		    "aoepeople/composer-installers": "dev-master",
+		    "avstudnitz/scopehint": "dev-master",
+		    "avstudnitz/admin-notification-advanced": "dev-master",
+		    "tim-reynolds/magento-qconfig": "dev-master"
     },
     "require-dev": {
- 		"fbrnc/aoe_profiler": "dev-master",
-		"aoepeople/aoe_templatehints": "dev-master",
-		"aoepeople/envsettingstool": "~1.0",
+ 		    "aoepeople/aoe_profiler": "dev-master",
+		    "aoepeople/aoe_templatehints": "dev-master",
+		    "aoepeople/envsettingstool": "~1.0",
         "sse/formfiller": "dev-master",
-		"jacquesbh/installer": "dev-master",
-		"ecomdev/ecomdev_phpunit": "*"
+		    "jacquesbh/installer": "dev-master",
+		    "ecomdev/ecomdev_phpunit": "*"
     },
     "autoload": {
         "psr-0": {
