@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "hashicorp/precise64"
+  config.vm.box = "ubuntu/trusty64"
 
   # CHANGE THIS:
   config.vm.hostname = "magento.local"
@@ -24,8 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :shell, :path => "bin/vagrant-bootstrap.sh"
-  config.vm.provision "shell", inline: "service apache2 restart", run: "always"
-  config.vm.provision "shell", inline: "nc -z -w5 localhost 1025 || mailcatcher --ip=0.0.0.0", run: "always"
+  #config.vm.provision "shell", inline: "service apache2 restart", run: "always"
+  #config.vm.provision "shell", inline: "nc -z -w5 localhost 1025 || mailcatcher --ip=0.0.0.0", run: "always"
   
   config.vm.synced_folder "./src", "/home/vagrant/src", type: "rsync",
     rsync__exclude: [".git/", ".settings/"],

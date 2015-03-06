@@ -9,7 +9,7 @@ cp -r /vagrant/.ssh/* /home/vagrant/.ssh/
 chmod 0600 /home/vagrant/.ssh/*
 chown vagrant:vagrant /home/vagrant/.ssh/*
 
-# PHP 5.4 from PPA
+# PHP 5.5 from PPA
 apt-get update
 apt-get install -y python-software-properties
 add-apt-repository -y ppa:ondrej/php5
@@ -21,20 +21,22 @@ apt-get install -y apache2 libnss-mdns curl git libssl0.9.8 sendmail language-pa
 apt-get install -y php5-dev libapache2-mod-php5 php5-cli php5-curl php5-mcrypt php5-gd php5-mysql php-pear php5-tidy
 
 # Zend Debug
+chmod +x /vagrant/bin/vagrant-zenddebugger.sh
 /vagrant/bin/vagrant-zenddebugger.sh
 cp /vagrant/conf/php/zend_debugger.ini /etc/php5/mods-available/
 php5enmod zend_debugger/30
 
-# Install Ruby 2.1 via RVM
+# Install Ruby 2.2 via RVM
+gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 curl -s -L get.rvm.io | bash -s stable
-source /etc/profile.d/rvm.sh
+source /usr/local/rvm/scripts/rvm
 rvm requirements
-rvm install 2.1.0
-rvm --default use 2.1.0
+rvm install 2.2.0
+rvm --default use 2.2.0
 
 # Mailcatcher to test emails (needs latest Ruby)
-apt-get install -y libsqlite3-dev
-gem install -y mailcatcher
+#apt-get install -y libsqlite3-dev
+gem install mailcatcher
 # start mailcatcher if not already running on port 1025
 # allow all ips, see https://github.com/sj26/mailcatcher/issues/89
 nc -z -w5 localhost 1025 || mailcatcher --ip=0.0.0.0
