@@ -23,7 +23,7 @@ modman deploy src --force
 # Use n98-magerun to set up Magento (database and local.xml)
 # CHANGE BASE URL AND MAGENTO VERSION HERE:
 # use --noDownload if Magento core is deployed with modman or composer. Remove the line if there already is a configured Magento installation
-n98-magerun install --dbHost="localhost" --dbUser="root" --dbPass="" --dbName="magento" --installSampleData=yes --useDefaultConfigParams=yes --magentoVersionByName="magento-ce-1.9.0.1" --installationFolder="www" --baseUrl="http://magento.local/"
+n98-magerun install --dbHost="localhost" --dbUser="root" --dbPass="" --dbName="magento" --installSampleData=no --useDefaultConfigParams=yes --magentoVersionByName="magento-ce-1.9.1.0" --installationFolder="www" --baseUrl="http://magento.local/"
 
 # Write permissions in media
 chmod -R 0770 /home/vagrant/www/media
