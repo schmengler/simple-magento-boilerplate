@@ -27,7 +27,8 @@ cp /vagrant/conf/php/zend_debugger.ini /etc/php5/mods-available/
 php5enmod zend_debugger/30
 
 # Install Ruby 2.2 via RVM
-gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+command curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
+#gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -s -L get.rvm.io | bash -s stable
 source /usr/local/rvm/scripts/rvm
 rvm requirements
